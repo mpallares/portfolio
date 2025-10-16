@@ -82,14 +82,6 @@ export default function Hero() {
               </div>
               <div>
                 <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-                  3
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Companies
-                </p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
                   20+
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
