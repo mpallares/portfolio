@@ -45,5 +45,4 @@ export interface PersonalInfo {
   location: string;
   yearsOfExperience: number;
   resumeUrl?: string;
-  avatar?: string;
 }
