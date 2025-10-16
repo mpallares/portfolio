@@ -2,6 +2,7 @@
 
 import { personalInfo } from '@/data/personalInfo';
 import { skillsByCategory } from '@/data/skills';
+import EmailProtected from './EmailProtected';
 
 export default function About() {
   return (
@@ -34,9 +35,9 @@ export default function About() {
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
                   Email
                 </p>
-                <p className="text-gray-900 dark:text-white font-medium break-all">
-                  {personalInfo.email}
-                </p>
+                <div className="text-gray-900 dark:text-white font-medium">
+                  <EmailProtected showCopyButton={false} />
+                </div>
               </div>
               <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
