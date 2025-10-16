@@ -24,9 +24,9 @@ export const projects: Project[] = [
   },
   {
     id: 'staking-rewards',
-    title: 'Staking Rewards Dashboard',
-    description: 'Real-time dashboard for monitoring staking rewards and performance metrics across multiple protocols.',
-    longDescription: 'Developed a comprehensive dashboard for users to track their staking rewards across multiple blockchain networks. Features include real-time analytics, performance comparisons, and personalized insights.',
+    title: 'Staking Rewards',
+    description: 'App to find the best yield opportunities across verified providers.',
+    longDescription: 'Developed a full-featured web application that aggregates staking opportunities from various providers, allowing users to easily compare yields and make informed decisions. Implemented advanced filtering and sorting options, user authentication, and a responsive design to ensure a seamless experience across devices.',
     image: '/images/projects/staking.jpg',
     technologies: ['React', 'Next.js', 'TypeScript', 'GraphQL', 'Tailwind CSS'],
     liveUrl: 'https://www.stakingrewards.com',
