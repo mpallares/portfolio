@@ -2,12 +2,16 @@ import { Skill } from './types';
 
 export const skills: Skill[] = [
   // Frontend
+  { name: 'JavaScript', category: 'frontend' },
   { name: 'React', category: 'frontend' },
   { name: 'Next.js', category: 'frontend' },
   { name: 'TypeScript', category: 'frontend' },
-  { name: 'JavaScript', category: 'frontend' },
   { name: 'Tailwind CSS', category: 'frontend' },
   { name: 'Redux', category: 'frontend' },
+  { name: 'Zustand', category: 'frontend' },
+  { name: 'Wagmi', category: 'frontend' },
+  { name: 'Ethers.js', category: 'frontend' },
+  { name: 'Material UI', category: 'frontend' },
 
   // Backend
   { name: 'Node.js', category: 'backend' },
@@ -27,16 +31,17 @@ export const skills: Skill[] = [
   { name: 'Git', category: 'tools' },
   { name: 'AWS', category: 'tools' },
   { name: 'CI/CD', category: 'tools' },
+  { name: 'Vitest', category: 'tools' },
   { name: 'Jest', category: 'tools' },
   { name: 'Cypress', category: 'tools' },
   { name: 'Foundry', category: 'tools' },
-  { name: 'Bun', category: 'tools' }
+  { name: 'Bun', category: 'tools' },
 ];
 
 // Group skills by category for easy filtering
 export const skillsByCategory = {
-  frontend: skills.filter(s => s.category === 'frontend'),
-  backend: skills.filter(s => s.category === 'backend'),
-  database: skills.filter(s => s.category === 'database'),
-  tools: skills.filter(s => s.category === 'tools')
+  frontend: skills.filter((s) => s.category === 'frontend'),
+  backend: skills.filter((s) => s.category === 'backend'),
+  database: skills.filter((s) => s.category === 'database'),
+  tools: skills.filter((s) => s.category === 'tools'),
 };
