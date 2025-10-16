@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { personalInfo } from '@/data/personalInfo';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,20 +54,14 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || isMobileMenuOpen
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md'
           : 'bg-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo/Name */}
-          <button
-            onClick={() => scrollToSection('home')}
-            className="text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-          >
-            {personalInfo.name.split(' ')[0]}
-          </button>
+        <div className="flex items-center justify-end h-20">
+        
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
