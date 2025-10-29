@@ -1,13 +1,9 @@
 'use client';
-
-import { useState } from 'react';
 import { personalInfo } from '@/data/personalInfo';
 import { skillsByCategory } from '@/data/skills';
 import EmailProtected from './EmailProtected';
-import ResumeRequestModal from './ResumeRequestModal';
 
 export default function About() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800/50">
       <div className="max-w-7xl mx-auto">
@@ -50,29 +46,6 @@ export default function About() {
                   {personalInfo.location}
                 </p>
               </div>
-            </div>
-
-            {/* Request Resume Button */}
-            <div className="pt-4">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                Request Resume
-              </button>
             </div>
           </div>
 
@@ -154,12 +127,6 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {/* Resume Request Modal */}
-      <ResumeRequestModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }
