@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 
 const Hero3DBackground = dynamic(() => import('./Hero3DBackground'), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900" />,
+  loading: () => <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950" />,
 });
 
 export default function Hero() {
@@ -47,18 +47,18 @@ export default function Hero() {
             }`}
           >
             <div className="space-y-2">
-              <p className="text-blue-600 dark:text-blue-400 font-medium text-base sm:text-lg">
+              <p className="text-blue-400 font-medium text-base sm:text-lg">
                 Hi, I&apos;m
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
                 {personalInfo.name}
               </h1>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-700 dark:text-gray-300 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-300 leading-tight">
                 {personalInfo.role}
               </h2>
             </div>
 
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
+            <p className="text-lg sm:text-xl text-gray-400 max-w-2xl">
               {personalInfo.tagline}
             </p>
 
@@ -72,27 +72,27 @@ export default function Hero() {
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 font-medium rounded-lg transition-all duration-300"
+                className="px-8 py-4 border-2 border-blue-400 text-blue-400 hover:bg-blue-900/20 font-medium rounded-lg transition-all duration-300"
               >
                 Get In Touch
               </button>
             </div>
 
             {/* Quick Stats */}
-            <div className="flex flex-wrap gap-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-wrap gap-8 pt-8 border-t border-gray-700">
               <div>
-                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                <p className="text-3xl font-bold text-blue-400">
                   {personalInfo.yearsOfExperience}+
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                   Years Experience
                 </p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                <p className="text-3xl font-bold text-blue-400">
                   20+
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                   Technologies
                 </p>
               </div>
@@ -109,11 +109,11 @@ export default function Hero() {
           >
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
               {/* Floating decoration */}
-              <div className="absolute -z-10 top-0 right-0 w-72 h-72 bg-blue-300 dark:bg-blue-700 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 animate-blob" />
-              <div className="absolute -z-10 bottom-0 left-0 w-72 h-72 bg-purple-300 dark:bg-purple-700 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-30 animate-blob animation-delay-2000" />
+              <div className="absolute -z-10 top-0 right-0 w-72 h-72 bg-blue-700 rounded-full mix-blend-multiply  filter blur-xl opacity-30 animate-blob" />
+              <div className="absolute -z-10 bottom-0 left-0 w-72 h-72 bg-purple-700 rounded-full mix-blend-multiply  filter blur-xl opacity-30 animate-blob animation-delay-2000" />
 
               {/* Profile Image */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-500 dark:border-blue-400 shadow-2xl">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-400 shadow-2xl">
                 <Image
                   src="/maria-image.jpg"
                   alt={personalInfo.name}

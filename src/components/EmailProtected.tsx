@@ -61,7 +61,7 @@ export default function EmailProtected({ className = '', showCopyButton = true }
       {showCopyButton && (
         <button
           onClick={handleCopy}
-          className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
+          className="p-1 hover:bg-gray-700 rounded transition-colors"
           title="Copy email"
           aria-label="Copy email to clipboard"
         >

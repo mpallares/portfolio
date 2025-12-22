@@ -145,10 +145,10 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Get In Touch
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
+          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-4">
             Have a project in mind or want to collaborate? Feel free to reach out!
           </p>
           <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full mt-6" />
@@ -158,10 +158,10 @@ export default function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Let&apos;s Connect
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-gray-300 mb-8">
                 I&apos;m always interested in hearing about new projects and opportunities.
                 Whether you have a question or just want to say hi, feel free to get in touch!
               </p>
@@ -169,14 +169,14 @@ export default function Contact() {
 
             {/* Email */}
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-3 bg-blue-900/30 rounded-lg">
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
               <div className="flex-1">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Email</p>
-                <div className="text-gray-900 dark:text-white font-medium">
+                <p className="text-sm text-gray-400 mb-1">Email</p>
+                <div className="text-white font-medium">
                   <EmailProtected />
                 </div>
               </div>
@@ -184,21 +184,21 @@ export default function Contact() {
 
             {/* Location */}
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="p-3 bg-blue-900/30 rounded-lg">
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Location</p>
-                <p className="text-gray-900 dark:text-white font-medium">{personalInfo.location}</p>
+                <p className="text-sm text-gray-400 mb-1">Location</p>
+                <p className="text-white font-medium">{personalInfo.location}</p>
               </div>
             </div>
 
             {/* Social Links */}
             <div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Follow me on</p>
+              <p className="text-sm text-gray-400 mb-4">Follow me on</p>
               <div className="flex gap-4">
                 {socialLinks.map((social) => (
                   <a
@@ -206,7 +206,7 @@ export default function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-blue-600 dark:hover:bg-blue-600 text-gray-700 dark:text-gray-300 hover:text-white transition-all duration-300 rounded-lg hover:scale-110"
+                    className="p-3 bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white transition-all duration-300 rounded-lg hover:scale-110"
                     aria-label={social.name}
                   >
                     {getSocialIcon(social.icon)}
@@ -217,11 +217,11 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+          <div className="bg-gray-800 rounded-xl shadow-lg p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                   Name
                 </label>
                 <input
@@ -233,18 +233,18 @@ export default function Contact() {
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.name
                       ? 'border-red-500 focus:ring-red-500'
-                      : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500'
-                  } bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent transition-colors`}
+                      : 'border-gray-600 focus:ring-blue-500'
+                  } bg-gray-700 text-white focus:ring-2 focus:border-transparent transition-colors`}
                   placeholder="Your name"
                 />
                 {errors.name && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
+                  <p className="mt-1 text-sm text-red-400">{errors.name}</p>
                 )}
               </div>
 
               {/* Email Field */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                   Email
                 </label>
                 <input
@@ -256,18 +256,18 @@ export default function Contact() {
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.email
                       ? 'border-red-500 focus:ring-red-500'
-                      : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500'
-                  } bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent transition-colors`}
+                      : 'border-gray-600 focus:ring-blue-500'
+                  } bg-gray-700 text-white focus:ring-2 focus:border-transparent transition-colors`}
                   placeholder="your.email@example.com"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
+                  <p className="mt-1 text-sm text-red-400">{errors.email}</p>
                 )}
               </div>
 
               {/* Message Field */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -279,12 +279,12 @@ export default function Contact() {
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.message
                       ? 'border-red-500 focus:ring-red-500'
-                      : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500'
-                  } bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent transition-colors resize-none`}
+                      : 'border-gray-600 focus:ring-blue-500'
+                  } bg-gray-700 text-white focus:ring-2 focus:border-transparent transition-colors resize-none`}
                   placeholder="Your message..."
                 />
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
+                  <p className="mt-1 text-sm text-red-400">{errors.message}</p>
                 )}
               </div>
 
@@ -299,7 +299,7 @@ export default function Contact() {
 
               {/* Success Message */}
               {submitStatus === 'success' && (
-                <div className="p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg flex items-center gap-2">
+                <div className="p-4 bg-green-900/30 text-green-300 rounded-lg flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -309,7 +309,7 @@ export default function Contact() {
 
               {/* Error Message */}
               {submitStatus === 'error' && (
-                <div className="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg flex items-center gap-2">
+                <div className="p-4 bg-red-900/30 text-red-300 rounded-lg flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>

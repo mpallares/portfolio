@@ -55,13 +55,13 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md'
+          ? 'bg-gray-900/80 backdrop-blur-md shadow-md'
           : 'bg-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-end h-20">
-        
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -71,13 +71,13 @@ export default function Header() {
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm font-medium transition-colors relative ${
                   activeSection === item.id
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                    ? 'text-blue-400'
+                    : 'text-gray-300 hover:text-blue-400'
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400" />
                 )}
               </button>
             ))}
@@ -86,7 +86,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="md:hidden p-2 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors"
             aria-label="Toggle menu"
           >
             <svg
@@ -116,7 +116,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden py-4 border-t border-gray-700">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <button
@@ -124,8 +124,8 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   className={`text-left px-4 py-2 rounded-lg transition-colors ${
                     activeSection === item.id
-                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      ? 'bg-blue-900/20 text-blue-400 font-medium'
+                      : 'text-gray-300 hover:bg-gray-800'
                   }`}
                 >
                   {item.label}

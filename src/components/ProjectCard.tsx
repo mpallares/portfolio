@@ -6,7 +6,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+    <div className="group bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       {/* Project Image */}
       <div className="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -66,10 +66,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Project Content */}
       <div className="p-6">
         <div className="mb-3">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
             {project.title}
           </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+          <p className="text-gray-300 text-sm leading-relaxed">
             {project.description}
           </p>
         </div>
@@ -79,21 +79,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.technologies.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium"
+              className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs font-medium"
             >
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+            <span className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs font-medium">
               +{project.technologies.length - 4} more
             </span>
           )}
         </div>
 
         {/* Category Badge */}
-        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-          <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold">
+        <div className="pt-4 border-t border-gray-700">
+          <span className="inline-block px-3 py-1 bg-blue-900/30 text-blue-300 rounded-full text-xs font-semibold">
             {project.category}
           </span>
         </div>
