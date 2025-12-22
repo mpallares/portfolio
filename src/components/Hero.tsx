@@ -3,6 +3,12 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { personalInfo } from '@/data/personalInfo';
+import dynamic from 'next/dynamic';
+
+const Hero3DBackground = dynamic(() => import('./Hero3DBackground'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900" />,
+});
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,9 +32,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20"
+      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 overflow-hidden"
+      style={{ position: 'relative' }}
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <Hero3DBackground />
+      <div className="max-w-7xl mx-auto w-full relative" style={{ zIndex: 10 }}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div
