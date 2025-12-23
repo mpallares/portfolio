@@ -76,7 +76,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.slice(0, 4).map((tech) => (
+          {project.technologies.map((tech) => (
             <span
               key={tech}
               className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs font-medium"
@@ -84,13 +84,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {tech}
             </span>
           ))}
-          {project.technologies.length > 4 && (
-            <span className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs font-medium">
-              +{project.technologies.length - 4} more
-            </span>
-          )}
         </div>
-
         {/* Category Badge */}
         <div className="pt-4 border-t border-gray-700">
           <span className="inline-block px-3 py-1 bg-blue-900/30 text-blue-300 rounded-full text-xs font-semibold">

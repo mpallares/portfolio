@@ -2,6 +2,17 @@ import { Project } from './types';
 
 export const projects: Project[] = [
   {
+    id: 'note-taker',
+    title: 'Note Taker',
+    description: 'Full-stack note-taking application with authentication and serverless database integration.',
+    longDescription: 'Built a modern full-stack note-taking application where users can securely save and manage their notes. Features user authentication with NextAuth, serverless PostgreSQL database with Neon, and Prisma ORM for type-safe database operations. Deployed on Vercel with a responsive UI built using Tailwind CSS.',
+    image: '/images/projects/note-taker.jpg',
+    technologies: ['Next.js', 'React', 'TypeScript', 'NextAuth', 'Prisma', 'Tailwind CSS', 'Neon DB', 'Vercel'],
+    liveUrl: 'https://note-taker-ten-theta.vercel.app',
+    githubUrl: 'https://github.com/mpallares/note-taker',
+    category: 'Full Stack'
+  },
+  {
     id: 'erc1155-claim',
     title: 'ERC1155 NFT Claim App',
     description: 'Web3 application for claiming ERC1155 NFTs with wallet integration and real-time updates.',
@@ -28,7 +39,7 @@ export const projects: Project[] = [
     description: 'App to find the best yield opportunities across verified providers.',
     longDescription: 'Developed a full-featured web application that aggregates staking opportunities from various providers, allowing users to easily compare yields and make informed decisions. Implemented advanced filtering and sorting options, user authentication, and a responsive design to ensure a seamless experience across devices.',
     image: '/images/projects/staking.jpg',
-    technologies: ['React', 'Next.js', 'TypeScript', 'GraphQL', 'Tailwind CSS'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'GraphQL', 'Tailwind CSS', 'Vercel', 'Cypress'],
     liveUrl: 'https://www.stakingrewards.com',
     category: 'Frontend'
   }
