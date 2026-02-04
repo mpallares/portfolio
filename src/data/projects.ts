@@ -2,6 +2,16 @@ import { Project } from './types';
 
 export const projects: Project[] = [
   {
+    id: 'bitcoin-lightning-payment',
+    title: 'Bitcoin Lightning Network Payment',
+    description: 'Full-stack payment application using Bitcoin Lightning Network for instant, low-fee transactions.',
+    longDescription: 'Built a complete payment solution leveraging the Bitcoin Lightning Network for fast and low-cost transactions. The backend uses Node.js with Express and Socket.io for real-time payment updates, integrating with LND (Lightning Network Daemon) nodes. The frontend is built with Next.js, React Query for data fetching, and Tailwind CSS for styling, providing a seamless real-time payment experience through WebSocket connections.',
+    image: '/images/projects/bitcoin-lightning.jpg',
+    technologies: ['Next.js', 'React', 'React Query', 'TypeScript', 'Node.js', 'Express', 'Socket.io', 'LND', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/mpallares/bitcoin-lightning-network-payment',
+    category: 'Full Stack'
+  },
+  {
     id: 'note-taker',
     title: 'Note Taker',
     description: 'Full-stack note-taking application with authentication and serverless database integration.',
