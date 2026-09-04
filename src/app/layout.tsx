@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { personalInfo } from "@/data/personalInfo";
@@ -9,8 +9,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mariapallares.dev";
+const title = `${personalInfo.name} | ${personalInfo.role}`;
+
 export const metadata: Metadata = {
-  title: `${personalInfo.name} | ${personalInfo.role}`,
+  metadataBase: new URL(siteUrl),
+  title,
   description: personalInfo.tagline,
   keywords: [
     "Full Stack Developer",
@@ -22,21 +26,23 @@ export const metadata: Metadata = {
     "Software Engineer",
     personalInfo.name,
   ],
-  authors: [{ name: personalInfo.name, url: personalInfo.email }],
+  authors: [{ name: personalInfo.name }],
   creator: personalInfo.name,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.com",
-    title: `${personalInfo.name} | ${personalInfo.role}`,
+    url: "/",
+    title,
     description: personalInfo.tagline,
     siteName: `${personalInfo.name} Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${personalInfo.name} | ${personalInfo.role}`,
+    title,
     description: personalInfo.tagline,
-    creator: "@alexjohnson",
   },
   robots: {
     index: true,
@@ -51,14 +57,19 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0a0f1a",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased bg-gray-900 text-white`}>
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} font-sans antialiased text-white`}>
         {children}
       </body>
     </html>

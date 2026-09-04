@@ -1,130 +1,67 @@
-'use client';
 import { personalInfo } from '@/data/personalInfo';
-import { skillsByCategory } from '@/data/skills';
+import { skillGroups } from '@/data/skills';
 import EmailProtected from './EmailProtected';
+import SectionHeading from './SectionHeading';
+import Reveal from './Reveal';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/50">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 section-wash">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            About Me
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full" />
-        </div>
+        <SectionHeading eyebrow="About" title="About Me" />
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Bio Section */}
-          <div className="space-y-6">
+          <Reveal className="space-y-6">
             <div className="space-y-4">
-              {personalInfo.bio.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-gray-300 leading-relaxed"
-                >
+              {personalInfo.bio.map((paragraph) => (
+                <p key={paragraph.slice(0, 32)} className="text-gray-300 leading-relaxed">
                   {paragraph}
                 </p>
               ))}
             </div>
 
             {/* Quick Info */}
-            <div className="grid grid-cols-2 gap-4 pt-6">
-              <div className="p-4 bg-gray-800 rounded-lg shadow-sm">
-                <p className="text-sm text-gray-400 mb-1">
-                  Email
-                </p>
-                <div className="text-white font-medium">
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 bg-gray-800/80 rounded-xl ring-1 ring-white/5">
+                <dt className="text-sm text-gray-400 mb-1">Email</dt>
+                <dd className="text-white font-medium">
                   <EmailProtected showCopyButton={false} />
-                </div>
+                </dd>
               </div>
-              <div className="p-4 bg-gray-800 rounded-lg shadow-sm">
-                <p className="text-sm text-gray-400 mb-1">
-                  Location
-                </p>
-                <p className="text-white font-medium">
-                  {personalInfo.location}
-                </p>
+              <div className="p-4 bg-gray-800/80 rounded-xl ring-1 ring-white/5">
+                <dt className="text-sm text-gray-400 mb-1">Location</dt>
+                <dd className="text-white font-medium">{personalInfo.location}</dd>
               </div>
-            </div>
-          </div>
+            </dl>
+          </Reveal>
 
           {/* Skills Section */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-white mb-6">
-                Skills & Technologies
-              </h3>
+          <Reveal delay={120} className="space-y-8">
+            <h3 className="text-2xl font-semibold text-white mb-6">
+              Skills &amp; Technologies
+            </h3>
 
-              {/* Frontend Skills */}
-              <div className="mb-6">
-                <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
-                  Frontend
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {skillsByCategory.frontend.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className="px-4 py-2 bg-blue-900/30 text-blue-300 rounded-lg text-sm font-medium hover:scale-105 transition-transform cursor-default"
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
+            <div className="space-y-6">
+              {skillGroups.map((group) => (
+                <div key={group.category}>
+                  <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
+                    {group.label}
+                  </h4>
+                  <ul className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <li
+                        key={skill.name}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium ring-1 transition-transform hover:scale-105 ${group.chipClassName}`}
+                      >
+                        {skill.name}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-
-              {/* Backend Skills */}
-              <div className="mb-6">
-                <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
-                  Backend
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {skillsByCategory.backend.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className="px-4 py-2 bg-green-900/30 text-green-300 rounded-lg text-sm font-medium hover:scale-105 transition-transform cursor-default"
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Database Skills */}
-              <div className="mb-6">
-                <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
-                  Database
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {skillsByCategory.database.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className="px-4 py-2 bg-purple-900/30 text-purple-300 rounded-lg text-sm font-medium hover:scale-105 transition-transform cursor-default"
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tools Skills */}
-              <div>
-                <h4 className="text-sm font-medium text-gray-400 mb-3 uppercase tracking-wider">
-                  Tools & DevOps
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {skillsByCategory.tools.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className="px-4 py-2 bg-orange-900/30 text-orange-300 rounded-lg text-sm font-medium hover:scale-105 transition-transform cursor-default"
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

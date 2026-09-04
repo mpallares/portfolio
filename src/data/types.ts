@@ -1,33 +1,34 @@
 // TypeScript types for portfolio data
 
+export type ProjectCategory = 'Full Stack' | 'Frontend' | 'Backend';
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   longDescription?: string;
-  image: string;
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
-  category: string;
+  category: ProjectCategory;
 }
 
 export interface Experience {
   id: string;
   company: string;
   role: string;
-  duration: string;
   startDate: string;
   endDate: string;
   description: string;
   achievements: string[];
-  logo?: string;
+  technologies: string[];
 }
+
+export type SkillCategory = 'frontend' | 'backend' | 'database' | 'tools';
 
 export interface Skill {
   name: string;
-  category: 'frontend' | 'backend' | 'database' | 'tools' | 'other';
-  icon?: string;
+  category: SkillCategory;
 }
 
 export interface SocialLink {
@@ -41,6 +42,8 @@ export interface PersonalInfo {
   role: string;
   tagline: string;
   bio: string[];
+  /** Headline technologies surfaced in the hero. */
+  coreStack: string[];
   email: string;
   location: string;
   yearsOfExperience: number;
