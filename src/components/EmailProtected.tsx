@@ -50,7 +50,7 @@ export default function EmailProtected({
     // Reserve the space while the address decodes so the layout does not jump.
     return (
       <span
-        className={`inline-block h-5 w-44 max-w-full animate-pulse rounded bg-gray-700/60 align-middle ${className}`}
+        className={`inline-block h-5 w-44 max-w-full animate-pulse rounded bg-surface-strong align-middle ${className}`}
         aria-hidden="true"
       />
     );
@@ -60,7 +60,7 @@ export default function EmailProtected({
     <span className={`inline-flex items-center gap-2 ${className}`}>
       <a
         href={`mailto:${email}`}
-        className="select-all hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+        className="select-all rounded transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
       >
         {email}
       </a>
@@ -68,16 +68,16 @@ export default function EmailProtected({
       {showCopyButton && (
         <button
           onClick={handleCopy}
-          className="p-1 hover:bg-gray-700 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          className="rounded-md p-1.5 text-faint transition-colors hover:bg-surface-strong hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
           title="Copy email"
           aria-label={copied ? 'Email copied to clipboard' : 'Copy email to clipboard'}
         >
           {copied ? (
-            <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg className="h-4 w-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           ) : (
-            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
           )}
