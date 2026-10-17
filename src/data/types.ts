@@ -40,7 +40,14 @@ export interface SocialLink {
 export interface PersonalInfo {
   name: string;
   role: string;
+  /** One-line summary used for metadata and the footer. */
   tagline: string;
+  /** Hero statement. */
+  headline: string;
+  /** Word or phrase inside `headline` set in the display face. */
+  headlineEmphasis?: string;
+  /** Short paragraph under the hero headline. */
+  intro: string;
   bio: string[];
   /** Headline technologies surfaced in the hero. */
   coreStack: string[];
