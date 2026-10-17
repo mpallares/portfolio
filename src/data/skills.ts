@@ -40,32 +40,14 @@ export const skills: Skill[] = [
 export interface SkillGroup {
   category: SkillCategory;
   label: string;
-  /** Tailwind classes for the chips in this group. */
-  chipClassName: string;
   skills: Skill[];
 }
 
-const groupMeta: { category: SkillCategory; label: string; chipClassName: string }[] = [
-  {
-    category: 'frontend',
-    label: 'Frontend',
-    chipClassName: 'bg-blue-500/10 text-blue-300 ring-blue-400/20',
-  },
-  {
-    category: 'backend',
-    label: 'Backend',
-    chipClassName: 'bg-emerald-500/10 text-emerald-300 ring-emerald-400/20',
-  },
-  {
-    category: 'database',
-    label: 'Database',
-    chipClassName: 'bg-purple-500/10 text-purple-300 ring-purple-400/20',
-  },
-  {
-    category: 'tools',
-    label: 'Tools & DevOps',
-    chipClassName: 'bg-amber-500/10 text-amber-300 ring-amber-400/20',
-  },
+const groupMeta: { category: SkillCategory; label: string }[] = [
+  { category: 'frontend', label: 'Frontend' },
+  { category: 'backend', label: 'Backend' },
+  { category: 'database', label: 'Database' },
+  { category: 'tools', label: 'Tools & DevOps' },
 ];
 
 /** Skills grouped for display, in a single pass over the list. */

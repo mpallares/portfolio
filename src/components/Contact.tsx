@@ -44,17 +44,14 @@ function validate(formData: FormData): FormErrors {
 
 const MIN_MESSAGE_LENGTH = 10;
 
-/**
- * Focus is shown with a neutral light border and halo rather than a coloured
- * ring, so the fields sit in the same white/5 + white/10 system as the cards
- * and chips instead of introducing a second accent.
- */
 const fieldClassName = (hasError: boolean) =>
-  `w-full rounded-lg border bg-white/5 px-4 py-3 text-white placeholder:text-gray-500 transition-colors focus:outline-none ${
+  `w-full rounded-xl border bg-surface px-4 py-3 text-fg placeholder:text-faint transition-colors focus:outline-none ${
     hasError
-      ? 'border-red-400/60 focus:border-red-400/80 focus:ring-2 focus:ring-red-400/15'
-      : 'border-white/10 hover:border-white/20 focus:border-white/50 focus:ring-2 focus:ring-white/15'
+      ? 'border-danger/60 focus:border-danger focus:ring-2 focus:ring-danger/20'
+      : 'border-line hover:border-line-strong focus:border-accent/70 focus:ring-2 focus:ring-accent/15'
   }`;
+
+const labelClassName = 'mb-2 block font-mono text-xs uppercase tracking-[0.16em] text-faint';
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>(emptyForm);
@@ -124,147 +121,126 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="px-5 py-20 sm:px-8 lg:px-12 lg:py-24">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading
+          index="04"
           eyebrow="Contact"
-          title="Get In Touch"
-          description="Have a project in mind or want to collaborate? Feel free to reach out!"
+          title={
+            <>
+              Let&apos;s build something <span className="em">together.</span>
+            </>
+          }
         />
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Contact Info */}
-          <Reveal className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-4">Let&apos;s Connect</h3>
-              <p className="text-gray-300">
-                I&apos;m always interested in hearing about new projects and opportunities.
-                Whether you have a question or just want to say hi, feel free to get in touch!
+        <div className="grid gap-14 lg:grid-cols-[11rem_1fr] lg:gap-10">
+          <div className="hidden lg:block" aria-hidden="true" />
+
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+            <Reveal>
+              <p className="max-w-md text-lg leading-relaxed text-muted">
+                I&apos;m open to hearing about new roles, freelance work and interesting side projects.
+                Whether you have a question or just want to say hi, my inbox is open.
               </p>
-            </div>
 
-            {/* Email */}
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-blue-500/10 ring-1 ring-blue-400/20 rounded-lg">
-                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+              <div className="mt-10">
+                <p className="mb-2 font-mono text-xs uppercase tracking-[0.16em] text-faint">Email</p>
+                <EmailProtected className="text-xl font-medium text-fg sm:text-2xl" />
               </div>
-              <div className="flex-1">
-                <p className="text-sm text-gray-400 mb-1">Email</p>
-                <div className="text-white font-medium">
-                  <EmailProtected />
-                </div>
-              </div>
-            </div>
 
-            {/* Location */}
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-blue-500/10 ring-1 ring-blue-400/20 rounded-lg">
-                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+              <div className="mt-8">
+                <p className="mb-2 font-mono text-xs uppercase tracking-[0.16em] text-faint">Based in</p>
+                <p className="text-fg">{personalInfo.location}</p>
               </div>
-              <div>
-                <p className="text-sm text-gray-400 mb-1">Location</p>
-                <p className="text-white font-medium">{personalInfo.location}</p>
+
+              <div className="mt-8">
+                <p className="mb-3 font-mono text-xs uppercase tracking-[0.16em] text-faint">Elsewhere</p>
+                <SocialLinks variant="text" />
               </div>
-            </div>
+            </Reveal>
 
-            {/* Social Links */}
-            <div>
-              <p className="text-sm text-gray-400 mb-4">Follow me on</p>
-              <SocialLinks />
-            </div>
-          </Reveal>
-
-          {/* Contact Form */}
-          <Reveal delay={120}>
-            <div className="rounded-xl bg-gray-800/50 p-6 shadow-lg ring-1 ring-white/10 sm:p-8">
+            <Reveal delay={120}>
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                {/* Name Field */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    autoComplete="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    aria-invalid={Boolean(errors.name)}
-                    aria-describedby={errors.name ? 'name-error' : undefined}
-                    className={fieldClassName(Boolean(errors.name))}
-                    placeholder="Your name"
-                  />
-                  {errors.name && (
-                    <p id="name-error" role="alert" className="mt-2 text-sm text-red-400">
-                      {errors.name}
-                    </p>
-                  )}
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="name" className={labelClassName}>
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      autoComplete="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                      className={fieldClassName(Boolean(errors.name))}
+                      placeholder="Your name"
+                    />
+                    {errors.name && (
+                      <p id="name-error" role="alert" className="mt-2 text-sm text-danger">
+                        {errors.name}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className={labelClassName}>
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                      className={fieldClassName(Boolean(errors.email))}
+                      placeholder="you@example.com"
+                    />
+                    {errors.email && (
+                      <p id="email-error" role="alert" className="mt-2 text-sm text-danger">
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
-                {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    aria-invalid={Boolean(errors.email)}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
-                    className={fieldClassName(Boolean(errors.email))}
-                    placeholder="your.email@example.com"
-                  />
-                  {errors.email && (
-                    <p id="email-error" role="alert" className="mt-2 text-sm text-red-400">
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
-
-                {/* Message Field */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="message" className={labelClassName}>
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={5}
+                    rows={6}
                     value={formData.message}
                     onChange={handleChange}
                     aria-invalid={Boolean(errors.message)}
                     aria-describedby={errors.message ? 'message-error' : undefined}
                     className={`${fieldClassName(Boolean(errors.message))} resize-none`}
-                    placeholder="Your message..."
+                    placeholder="What are you working on?"
                   />
                   {errors.message ? (
-                    <p id="message-error" role="alert" className="mt-2 text-sm text-red-400">
+                    <p id="message-error" role="alert" className="mt-2 text-sm text-danger">
                       {errors.message}
                     </p>
                   ) : (
                     remainingCharacters > 0 && (
-                      <p className="mt-2 text-sm text-gray-500">
+                      <p className="mt-2 font-mono text-xs text-faint">
                         {remainingCharacters} more character{remainingCharacters === 1 ? '' : 's'} to go
                       </p>
                     )
                   )}
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 font-medium text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-400 disabled:shadow-none"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-fg px-6 py-3.5 text-sm font-medium text-bg transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:bg-surface-strong disabled:text-faint sm:w-auto"
                 >
                   {isSubmitting && (
                     <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -276,32 +252,31 @@ export default function Contact() {
                       />
                     </svg>
                   )}
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? 'Sending…' : 'Send message'}
                 </button>
 
-                {/* Status Messages */}
                 <div aria-live="polite">
                   {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-500/10 text-green-300 ring-1 ring-green-400/20 rounded-lg flex items-center gap-2">
-                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <div className="flex items-center gap-3 rounded-xl bg-success/10 p-4 text-sm text-success ring-1 ring-success/20">
+                      <svg className="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span>Message sent successfully! I&apos;ll get back to you soon.</span>
+                      <span>Message sent. I&apos;ll get back to you soon.</span>
                     </div>
                   )}
 
                   {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-500/10 text-red-300 ring-1 ring-red-400/20 rounded-lg flex items-center gap-2">
-                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <div className="flex items-center gap-3 rounded-xl bg-danger/10 p-4 text-sm text-danger ring-1 ring-danger/20">
+                      <svg className="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span>Failed to send message. Please try again or email me directly.</span>
+                      <span>Something went wrong. Please try again or email me directly.</span>
                     </div>
                   )}
                 </div>
               </form>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>
