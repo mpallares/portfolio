@@ -9,6 +9,8 @@ import ScrollProgressBar from './ScrollProgressBar';
 import { personalInfo } from '@/data/personalInfo';
 
 const sectionIds = navItems.map((item) => item.id);
+// The wordmark already takes you home, so the nav only lists the sections.
+const sectionLinks = navItems.filter((item) => item.id !== 'home');
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,89 +40,96 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const solid = isMobileMenuOpen || isScrolled;
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isMobileMenuOpen
-          ? 'bg-gray-950/95 backdrop-blur-md border-b border-white/5'
-          : isScrolled
-            ? 'bg-gray-950/80 backdrop-blur-md border-b border-white/5'
-            : 'bg-transparent border-b border-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        solid ? 'border-b border-line bg-bg/80 backdrop-blur-md' : 'border-b border-transparent bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand: a plain wordmark, revealed only once the hero's own
-              headline has scrolled out of view. */}
+      <nav className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12" aria-label="Main">
+        <div className="flex h-16 items-center justify-between">
+          {/* Wordmark, revealed once the hero's own name line has scrolled away. */}
           <button
             onClick={() => handleNavigate('home')}
             aria-label={`${personalInfo.name} — back to top`}
-            className={`-mx-1 rounded-lg px-1 text-sm font-semibold tracking-tight text-gray-200 transition-all duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
+            className={`-mx-1 rounded px-1 font-mono text-sm tracking-tight text-fg transition-all duration-300 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 ${
               isScrolled ? 'translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
             }`}
           >
             {personalInfo.name}
           </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavigate(item.id)}
-                aria-current={activeSection === item.id ? 'true' : undefined}
-                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
-                  activeSection === item.id
-                    ? 'text-blue-400'
-                    : 'text-gray-300 hover:text-blue-400'
-                }`}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-blue-400" />
-                )}
-              </button>
-            ))}
+          {/* Desktop navigation */}
+          <div className="hidden items-center gap-7 md:flex">
+            {sectionLinks.map((item, index) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavigate(item.id)}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`group inline-flex items-center gap-2 rounded text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 ${
+                    isActive ? 'text-fg' : 'text-muted hover:text-fg'
+                  }`}
+                >
+                  <span
+                    className={`font-mono text-[11px] transition-colors ${
+                      isActive ? 'text-accent' : 'text-faint group-hover:text-muted'
+                    }`}
+                  >
+                    0{index + 1}
+                  </span>
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen((open) => !open)}
-            className="md:hidden p-2 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="-mr-2 rounded-full p-2 text-muted transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 md:hidden"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
-                d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                strokeWidth={1.8}
+                d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 7h16M4 12h16M4 17h16'}
               />
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div id="mobile-menu" className="md:hidden py-4 border-t border-white/5">
-            <div className="flex flex-col space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavigate(item.id)}
-                  aria-current={activeSection === item.id ? 'true' : undefined}
-                  className={`text-left px-4 py-2.5 rounded-lg transition-colors ${
-                    activeSection === item.id
-                      ? 'bg-blue-500/10 text-blue-400 font-medium'
-                      : 'text-gray-300 hover:bg-gray-800'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
+          <div id="mobile-menu" className="border-t border-line py-3 md:hidden">
+            <ul>
+              {sectionLinks.map((item, index) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <li key={item.id}>
+                    <button
+                      onClick={() => handleNavigate(item.id)}
+                      aria-current={isActive ? 'true' : undefined}
+                      className={`flex w-full items-center gap-4 rounded-lg px-2 py-3 text-left text-lg transition-colors ${
+                        isActive ? 'text-fg' : 'text-muted hover:text-fg'
+                      }`}
+                    >
+                      <span className={`font-mono text-xs ${isActive ? 'text-accent' : 'text-faint'}`}>
+                        0{index + 1}
+                      </span>
+                      {item.label}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         )}
       </nav>
