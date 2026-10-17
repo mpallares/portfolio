@@ -1,16 +1,12 @@
 'use client';
 
+import { useRef } from 'react';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { personalInfo } from '@/data/personalInfo';
 import { experiences } from '@/data/experience';
 import { scrollToSection } from '@/lib/scroll';
 import SocialLinks from './SocialLinks';
-
-const Hero3DBackground = dynamic(() => import('./Hero3DBackground'), {
-  ssr: false,
-  loading: () => null,
-});
+import HeroDotField from './HeroDotField';
 
 const current = experiences.find((experience) => experience.endDate === 'Present');
 
@@ -28,12 +24,14 @@ function Headline({ text, emphasis }: { text: string; emphasis?: string }) {
 }
 
 export default function Hero() {
+  const portraitRef = useRef<HTMLElement>(null);
+
   return (
     <section
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden px-5 pb-12 pt-28 sm:px-8 sm:pb-20 lg:px-12"
     >
-      <Hero3DBackground />
+      <HeroDotField anchorRef={portraitRef} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="grid items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
@@ -104,7 +102,7 @@ export default function Hero() {
 
           {/* Portrait */}
           <div className="rise flex justify-center lg:justify-end" style={{ animationDelay: '200ms' }}>
-            <figure className="relative w-56 sm:w-72 lg:w-full lg:max-w-sm">
+            <figure ref={portraitRef} className="relative w-56 sm:w-72 lg:w-full lg:max-w-sm">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-surface ring-1 ring-line">
                 <Image
                   src="/maria-image.jpg"
