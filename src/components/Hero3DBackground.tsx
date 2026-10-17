@@ -51,7 +51,7 @@ function WaveParticles() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#60A5FA" transparent opacity={0.6} sizeAttenuation />
+      <pointsMaterial size={0.04} color="#d9c08a" transparent opacity={0.45} sizeAttenuation />
     </points>
   );
 }
