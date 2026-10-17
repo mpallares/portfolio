@@ -63,7 +63,7 @@ export default function ScrollProgressBar() {
     <div
       ref={ref}
       style={{ transform: 'scaleX(0)' }}
-      className="h-0.5 origin-left bg-gradient-to-r from-blue-500 to-purple-500 will-change-transform"
+      className="h-px origin-left bg-accent will-change-transform"
       aria-hidden="true"
     />
   );

@@ -1,12 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { personalInfo } from "@/data/personalInfo";
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-geist-sans",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-instrument-serif",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mariapallares.dev";
@@ -22,7 +36,8 @@ export const metadata: Metadata = {
     "Next.js",
     "TypeScript",
     "Node.js",
-    "Web Development",
+    "Web3",
+    "Fintech",
     "Software Engineer",
     personalInfo.name,
   ],
@@ -58,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0f1a",
+  themeColor: "#0a0a0a",
   colorScheme: "dark",
 };
 
@@ -68,10 +83,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans antialiased text-white`}>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} dark`}
+    >
+      <body className="bg-bg font-sans text-fg antialiased">{children}</body>
     </html>
   );
 }
